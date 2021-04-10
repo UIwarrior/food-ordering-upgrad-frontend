@@ -230,10 +230,14 @@ this.mounted = true;
 //Set component state values from props passed from Details page
 componentWillMount(){
   try{
-    console.log(this.props.history.location.state.chcartItems.ItemList);
-    this.setState({chcartItems:this.props.history.location.state.chcartItems});
-    this.setState({totalCartItemsValue:this.props.history.location.state.totalCartItemsValue});
-    this.setState({resDetails:JSON.parse(sessionStorage.getItem("restaurantDetails"))});
+    //console.log(this.props.history.location.state.chcartItems.ItemList);
+    //this.setState({chcartItems:this.props.history.location.state.chcartItems});
+    //this.setState({totalCartItemsValue:this.props.history.location.state.totalCartItemsValue});
+    this.setState({
+      chcartItems: this.props.history.location.state.chcartItems,
+      totalCartItemsValue:this.props.history.location.state.totalCartItemsValue,
+      resDetails: JSON.parse(sessionStorage.getItem("restaurantDetails")),
+    });
     this.getAddresses(baseURL, access_token);
     this.getPaymentMethods();
     this.getStates();
