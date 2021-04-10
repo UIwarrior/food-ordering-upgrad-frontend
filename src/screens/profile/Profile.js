@@ -3,7 +3,6 @@ import Header from '../../common/header/Header';
 
 class Profile extends Component{
 
-
     componentWillMount(){
         if(sessionStorage.getItem("access-token")===null || sessionStorage.getItem("access-token")==="null"){
             this.props.history.push({

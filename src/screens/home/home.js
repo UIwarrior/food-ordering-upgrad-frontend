@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../common/header/Header';
-//import { Route, Link } from 'react-router-dom';
-import * as Utils from "../../common/Utils";
-import * as Constants from "../../common/Constants";
+import * as Utils from "../../utils/Utils";
+import * as Constants from "../../utils/Constants";
 import RestaurantCard from './RestaurantCard';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from "@material-ui/core/styles";
@@ -12,11 +11,10 @@ import './home.css';
 const styles = {
     resCard: { width: "90%", cursor: "pointer" }
 };
-
 class Home extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             imageData: [],
             data: []
