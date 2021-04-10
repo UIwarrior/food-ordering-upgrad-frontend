@@ -1,17 +1,32 @@
-import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./screens/home/home";
+import Checkout from "./screens/checkout/Checkout";
+import Details from "./screens/details/Details";
+import Profile from "./screens/profile/Profile";
 import history from './history';
-import Home from './screens/home/home';
+class AppRoutes extends Component {
 
+    constructor() {
+        super();
+        //will have to be replaced with the provided url
+        this.baseUrl = "http://localhost:8080/api/";
+    }
 
-const AppRoutes = () => {
-  return (
-    <Router history = {history}>
-      <Switch>
-        <Route exact path="/" component={Home} />
-      </Switch>
-    </Router>
-  );
-};
+    render() {
+        return (
+            <Router history = {history}>
+                <div className="main-container">
+                    <Route exact path="/" render={props => <Home {...props} baseUrl={this.baseUrl} />} />
+                    <Route exact path="/restaurant/:id" render={props => <Details {...props} baseUrl={this.baseUrl} />} />
+                    <Route exact path="/checkout" render={props => <Checkout {...props} baseUrl={this.baseUrl} />} />
+                    <Route exact path="/profile" render={props => <Profile {...props} baseUrl={this.baseUrl} />} />
+                </div>
+            </Router>
+
+        );
+    }
+
+}
 
 export default AppRoutes;

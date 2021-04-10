@@ -6,7 +6,7 @@ import * as Constants from "../../common/Constants";
 import RestaurantCard from './RestaurantCard';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from "@material-ui/core/styles";
-import './Home.css';
+import './home.css';
 
 
 const styles = {
