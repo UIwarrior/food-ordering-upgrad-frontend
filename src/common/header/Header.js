@@ -14,6 +14,7 @@ import Button from "@material-ui/core/Button";
 import PropTypes from "prop-types";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import { Link } from "react-router-dom";
+import { DISPLAY_NONE, DISPLAY_BLOCK } from '../../utils/Constants';
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -72,15 +73,15 @@ class Header extends Component {
       lastname: "",
       mobile: "",
       passwordReg: "",
-      usernameRequired: "dispNone",
-      passwordRequired: "dispNone",
-      loginError: "dispNone",
-      signupError: "dispNone",
-      emailRequired: "dispNone",
-      firstnameRequired: "dispNone",
-      lastnameRequired: "dispNone",
-      mobileRequired: "dispNone",
-      passwordRegRequired: "dispNone",
+      usernameRequired: DISPLAY_NONE,
+      passwordRequired: DISPLAY_NONE,
+      loginError: DISPLAY_NONE,
+      signupError: DISPLAY_NONE,
+      emailRequired: DISPLAY_NONE,
+      firstnameRequired: DISPLAY_NONE,
+      lastnameRequired: DISPLAY_NONE,
+      mobileRequired: DISPLAY_NONE,
+      passwordRegRequired: DISPLAY_NONE,
       registrationSuccess: false,
       signUpErrorMsg: "",
       signUpErrCode: "",
@@ -129,14 +130,14 @@ class Header extends Component {
 
     //Checking if any input fields are empty
     this.state.username === ""
-      ? this.setState({ usernameRequired: "dispBlock" })
-      : this.setState({ usernameRequired: "dispNone" });
+      ? this.setState({ usernameRequired: DISPLAY_BLOCK })
+      : this.setState({ usernameRequired: DISPLAY_NONE });
     this.state.password === ""
-      ? this.setState({ passwordRequired: "dispBlock" })
-      : this.setState({ passwordRequired: "dispNone" });
+      ? this.setState({ passwordRequired: DISPLAY_BLOCK })
+      : this.setState({ passwordRequired: DISPLAY_NONE });
     this.state.loginErrorMsg === ""
-      ? this.setState({ loginError: "dispBlock" })
-      : this.setState({ loginError: "dispNone" });
+      ? this.setState({ loginError: DISPLAY_BLOCK })
+      : this.setState({ loginError: DISPLAY_NONE });
 
     //If username and password both are null we return
     if (this.state.username === "" || this.state.password === "") {
@@ -161,7 +162,7 @@ class Header extends Component {
           loginResponse.code === "ATH-002"
         ) {
           that.setState({
-            loginError: "dispBlock",
+            loginError: DISPLAY_BLOCK,
             loginErrCode: loginResponse.code,
             loginErrorMsg: loginResponse.message,
           });
@@ -202,11 +203,11 @@ class Header extends Component {
   };
   /*
   checkForm = () => {
-    this.state.email === "" ? this.setState({ emailRequired: "dispBlock" }) : this.setState({ emailRequired: "dispNone" });
-    this.state.firstname === "" ? this.setState({ firstnameRequired: "dispBlock" }) : this.setState({ firstnameRequired: "dispNone" });
-    this.state.lastname === "" ? this.setState({ lastnameRequired: "dispBlock" }) : this.setState({ lastnameRequired: "dispNone" });
-    this.state.mobile === "" ? this.setState({ mobileRequired: "dispBlock" }) : this.setState({ mobileRequired: "dispNone" });
-    this.state.passwordReg === "" ? this.setState({ passwordRegRequired: "dispBlock" }) : this.setState({ passwordRegRequired: "dispNone" });
+    this.state.email === "" ? this.setState({ emailRequired: DISPLAY_BLOCK }) : this.setState({ emailRequired: "dispNone" });
+    this.state.firstname === "" ? this.setState({ firstnameRequired: DISPLAY_BLOCK }) : this.setState({ firstnameRequired: "dispNone" });
+    this.state.lastname === "" ? this.setState({ lastnameRequired: DISPLAY_BLOCK }) : this.setState({ lastnameRequired: "dispNone" });
+    this.state.mobile === "" ? this.setState({ mobileRequired: DISPLAY_BLOCK }) : this.setState({ mobileRequired: "dispNone" });
+    this.state.passwordReg === "" ? this.setState({ passwordRegRequired: DISPLAY_BLOCK }) : this.setState({ passwordRegRequired: "dispNone" });
     if (this.state.email === "" || this.state.firstname === "" || this.state.lastname === "" || this.state.mobile === "" || this.state.passwordReg === "") { return; }
   }*/
 
@@ -217,17 +218,17 @@ class Header extends Component {
     //this.setState({ signUpErrCode: "" });
     //Checking if any input fields are empty
     this.state.email === ""
-      ? this.setState({ emailRequired: "dispBlock" })
-      : this.setState({ emailRequired: "dispNone" });
+      ? this.setState({ emailRequired: DISPLAY_BLOCK })
+      : this.setState({ emailRequired: DISPLAY_NONE });
     this.state.firstname === ""
-      ? this.setState({ firstnameRequired: "dispBlock" })
-      : this.setState({ firstnameRequired: "dispNone" });
+      ? this.setState({ firstnameRequired: DISPLAY_BLOCK })
+      : this.setState({ firstnameRequired: DISPLAY_NONE });
     this.state.mobile === ""
-      ? this.setState({ mobileRequired: "dispBlock" })
-      : this.setState({ mobileRequired: "dispNone" });
+      ? this.setState({ mobileRequired: DISPLAY_BLOCK })
+      : this.setState({ mobileRequired: DISPLAY_NONE });
     this.state.passwordReg === ""
-      ? this.setState({ passwordRegRequired: "dispBlock" })
-      : this.setState({ passwordRegRequired: "dispNone" });
+      ? this.setState({ passwordRegRequired: DISPLAY_BLOCK })
+      : this.setState({ passwordRegRequired: DISPLAY_NONE });
     if (
       this.state.email === "" ||
       this.state.firstname === "" ||
@@ -265,7 +266,7 @@ class Header extends Component {
           signupResponse.code === "SGR-003" ||
           signupResponse.code === "SGR-004"
         ) {
-          that.setState({ signupError: "dispBlock",  signUpErrCode: signupResponse.code, signUpErrorMsg: signupResponse.message });
+          that.setState({ signupError: DISPLAY_BLOCK,  signUpErrCode: signupResponse.code, signUpErrorMsg: signupResponse.message });
           //that.setState({ signUpErrCode: signupResponse.code });
           // that.setState({ signUpErrorMsg: signupResponse.message });
         } else {
@@ -302,15 +303,15 @@ class Header extends Component {
       loginInvalidContactNo: "",
       loginErrCode: "",
       loginErrorMsg: "",
-      usernameRequired: "dispNone",
-      passwordRequired: "dispNone" ,
-      loginError: "dispNone",
-      signupError: "dispNone",
-      emailRequired: "dispNone",
-      firstnameRequired: "dispNone",
-      lastnameRequired: "dispNone",
-      mobileRequired: "dispNone",
-      passwordRegRequired: "dispNone"
+      usernameRequired: DISPLAY_NONE,
+      passwordRequired: DISPLAY_NONE ,
+      loginError: DISPLAY_NONE,
+      signupError: DISPLAY_NONE,
+      emailRequired: DISPLAY_NONE,
+      firstnameRequired: DISPLAY_NONE,
+      lastnameRequired: DISPLAY_NONE,
+      mobileRequired: DISPLAY_NONE,
+      passwordRegRequired: DISPLAY_NONE
     });
     
     /*this.setState({ value: 0 });

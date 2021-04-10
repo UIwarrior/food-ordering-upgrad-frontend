@@ -4,8 +4,8 @@ import './Checkout.css';
 //Material-ui Components
 import Grid from "@material-ui/core/Grid";
 import PropTypes from 'prop-types';
-import * as Utils from '../../common/Utils';
-import * as Constants from '../../common/Constants';
+import * as Utils from '../../utils/Utils';
+import * as Constants from '../../utils/Constants';
 import { withStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";

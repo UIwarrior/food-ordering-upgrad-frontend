@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../../common/header/Header';
 import * as Utils from "../../utils/Utils";
 import * as Constants from "../../utils/Constants";
-import RestaurantCard from './RestaurantCard';
+import RestaurantCard from '../../common/card/RestaurantCard';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from "@material-ui/core/styles";
 import './home.css';
