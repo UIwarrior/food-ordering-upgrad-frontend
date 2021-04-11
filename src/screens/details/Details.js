@@ -15,7 +15,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import "../../assets/font-awesome-4.7.0/css/font-awesome.min.css";
 import "./Details.css";
 import { IconButton } from "@material-ui/core";
-
+const apiURL = "http://localhost:8080/api/";
 class Details extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +32,7 @@ class Details extends Component {
         totalItemCount: 0,
       },
     };
-    this.apiURL = "http://localhost:8080/api/";
+   
   }
 
   componentWillMount() {
@@ -53,7 +53,7 @@ class Details extends Component {
         });
       }
     });
-    xhr_resDetails.open("GET", this.apiURL + "restaurant/" + resId);
+    xhr_resDetails.open("GET", apiURL + "restaurant/" + resId);
     xhr_resDetails.setRequestHeader("Cache-Control", "no-cache");
     xhr_resDetails.send(dataRes);
   }
@@ -69,7 +69,7 @@ class Details extends Component {
       totalItemCount: 0,
     };
     let findIndex = null;
-    //If the item is new, not already added into the list, then insert newly
+    //If the item is new, not already added into the list, then insert newly added item
     let findItem = myCartItem.itemList.find((cartItem, index) => {
       if (cartItem.item.id === item.id) {
         findIndex = index;
@@ -149,7 +149,8 @@ class Details extends Component {
     });
   };
 
-  //SnackBar handler both open and close function
+  /** SnackBar handler both open and close function
+  */
   snackBarHandler = (message) => {
     this.setState({ snackBarOpen: false, snackBarMessage: message });
     this.setState({ snackBarOpen: true });
@@ -189,7 +190,7 @@ class Details extends Component {
       <div className="mainDiv">
         <Header
           logoutHandler={this.loginredirect}
-          baseUrl="http://localhost:8080/api/"
+          baseUrl={apiURL}
         />
         <div>
           <div className="resMainDiv">
