@@ -21,7 +21,6 @@ import Snackbar from "@material-ui/core/Snackbar";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Menu from "@material-ui/core/Menu";
-import api from '../../utils/api';
 
 const customStyles = {
   content: {
