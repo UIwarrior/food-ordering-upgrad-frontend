@@ -9,17 +9,28 @@ import Typography from "@material-ui/core/Typography";
 import { withRouter } from "react-router-dom";
 import "../../assets/font-awesome-4.7.0/css/font-awesome.min.css";
 
-const RestaurantCard = function (props) {
+const RestaurantCard = function ({
+  index,
+  classes,
+  resId,
+  history,
+  resName,
+  resURL,
+  resFoodCategories,
+  resCustRating,
+  resNumberCustRated,
+  avgPrice
+}) {
   // const image = props.image;
-  const index = props.index;
-  const classes = props.classes;
+  //const index = props.index;
+  //const classes = props.classes;
 
   return (
     <div
       className="cardContainer"
       onClick={() => {
-        let detailsPageUrl = "/restaurant/" + props.resId;
-        return props.history.push(detailsPageUrl);
+        let detailsPageUrl = "/restaurant/" + resId;
+        return history.push(detailsPageUrl);
       }}
       key={index}
     >
@@ -30,13 +41,13 @@ const RestaurantCard = function (props) {
       >
         <CardMedia
           component="img"
-          alt={props.resName}
+          alt={resName}
           height="160"
-          image={props.resURL}
+          image={resURL}
         />
-        <CardContent style={{minHeight: '170px'}}>
+        <CardContent style={{ minHeight: "170px" }}>
           <Typography gutterBottom variant="h4" component="h2">
-            {props.resName}
+            {resName}
           </Typography>
           <div>
             <br />
@@ -44,7 +55,7 @@ const RestaurantCard = function (props) {
               style={{ height: "18px", display: "block" }}
               variant="h6"
             >
-              {props.resFoodCategories}
+              {resFoodCategories}
             </Typography>
           </div>
           <br />
@@ -57,14 +68,14 @@ const RestaurantCard = function (props) {
             </span>
             <span>
               {" "}
-              {props.resCustRating} ({props.resNumberCustRated})
+              {resCustRating} ({resNumberCustRated})
             </span>
           </div>
           <div className="avg-price">
             <span>
               <i className="fa fa-inr"></i>
               <span style={{ fontSize: "100%", fontWeight: "bold" }}>
-                {props.avgPrice} for two{" "}
+                {avgPrice} for two{" "}
               </span>
             </span>
           </div>
