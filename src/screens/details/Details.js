@@ -151,9 +151,8 @@ addToCart = (item, category) => {
 
 //SnackBar handler both open and close function
 snackBarHandler = (message) => {
- this.setState({ snackBarOpen: false});
-  this.setState({ snackBarMessage: message});
-  this.setState({ snackBarOpen: true});
+ this.setState({ snackBarOpen: false, snackBarMessage: message});
+ this.setState({ snackBarOpen: true});
 }
 
 //Checkout button

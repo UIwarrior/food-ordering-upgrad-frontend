@@ -28,3 +28,7 @@ export const CartButtonAction = Object.freeze({
 /* constants */
 
 export const LOGIN_CREDENTIALS_ERROR_MSG = "Invalid credentials!";
+
+export const DISPLAY_NONE = "dispNone";
+export const DISPLAY_BLOCK = "dispBlock";
+

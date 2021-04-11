@@ -4,8 +4,8 @@ import './Checkout.css';
 //Material-ui Components
 import Grid from "@material-ui/core/Grid";
 import PropTypes from 'prop-types';
-import * as Utils from '../../common/Utils';
-import * as Constants from '../../common/Constants';
+import * as Utils from '../../utils/Utils';
+import * as Constants from '../../utils/Constants';
 import { withStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -230,10 +230,14 @@ this.mounted = true;
 //Set component state values from props passed from Details page
 componentWillMount(){
   try{
-    console.log(this.props.history.location.state.chcartItems.ItemList);
-    this.setState({chcartItems:this.props.history.location.state.chcartItems});
-    this.setState({totalCartItemsValue:this.props.history.location.state.totalCartItemsValue});
-    this.setState({resDetails:JSON.parse(sessionStorage.getItem("restaurantDetails"))});
+    //console.log(this.props.history.location.state.chcartItems.ItemList);
+    //this.setState({chcartItems:this.props.history.location.state.chcartItems});
+    //this.setState({totalCartItemsValue:this.props.history.location.state.totalCartItemsValue});
+    this.setState({
+      chcartItems: this.props.history.location.state.chcartItems,
+      totalCartItemsValue:this.props.history.location.state.totalCartItemsValue,
+      resDetails: JSON.parse(sessionStorage.getItem("restaurantDetails")),
+    });
     this.getAddresses(baseURL, access_token);
     this.getPaymentMethods();
     this.getStates();
