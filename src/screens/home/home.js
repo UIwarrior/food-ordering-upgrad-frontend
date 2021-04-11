@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from "@material-ui/core/styles";
 import './Home.css';
 
-
 const styles = {
     resCard: { width: "90%", cursor: "pointer" }
 };
@@ -25,7 +24,9 @@ class Home extends Component {
         this.getAllImageData();
     }
 
-    // Get all restuarants data
+    /**
+     * Get all resturants info
+     */
     getAllImageData = () => {
         const requestUrl = this.props.baseUrl + "restaurant";
         const that = this;
