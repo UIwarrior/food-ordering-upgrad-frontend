@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import PropTypes from 'prop-types';
 import * as Utils from '../../utils/Utils';
 import * as Constants from '../../utils/Constants';
+import { DISPLAY_BLOCK, DISPLAY_NONE } from '../../utils/Constants';
 import { withStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -141,24 +142,24 @@ class Checkout extends Component {
         paymentMethod:"",
         dataStates:[], 
         flatBldNo : "",
-        flatBldNoRequired : 'dispNone',
+        flatBldNoRequired : DISPLAY_NONE,
         locality:"",
-        localityRequired : 'dispNone',
+        localityRequired : DISPLAY_NONE,
         city:"",
-        cityRequired : 'dispNone',
+        cityRequired : DISPLAY_NONE,
         pincode:"",
-        pincodeRequired : 'dispNone',
-        stateRequired:'dispNone',
+        pincodeRequired : DISPLAY_NONE,
+        stateRequired:DISPLAY_NONE,
         saveAddressSuccess : false,
-        saveAddressError : 'dispNone',
+        saveAddressError : DISPLAY_NONE,
         saveAddressErrorMsg : '',
-        checkOutAddressRequired : 'dispNone',
+        checkOutAddressRequired : DISPLAY_NONE,
         selAddress : "",
         chcartItems:[],
         totalCartItemsValue:"",
         resDetails:null,
         onNewAddress:false,
-        changeOption:"dispNone"
+        changeOption:DISPLAY_NONE
     };
 }
 
@@ -287,14 +288,14 @@ pinCodeChangeHandler = (e) => {
 addressClickHandler = () =>    
 {
 
-this.setState({saveAddressError:"dispNone"})
+this.setState({saveAddressError:DISPLAY_NONE})
   //Validating that no fields are empty
   //If empty, "required" text is displayed
-this.state.flatBldNo === "" ? this.setState({ flatBldNoRequired: "dispBlock" }) : this.setState({ flatBldNoRequired: "dispNone" });      
-this.state.locality === "" ? this.setState({ localityRequired: "dispBlock" }) : this.setState({ localityRequired: "dispNone"});
-this.state.city === "" ? this.setState({ cityRequired: "dispBlock" }) : this.setState({ cityRequired: "dispNone" });
-this.state.pincode === "" ? this.setState({ pincodeRequired: "dispBlock" }) : this.setState({ pincodeRequired: "dispNone" });
-this.state.selected === 0 ? this.setState({ stateRequired: "dispBlock" }) : this.setState({ stateRequired: "dispNone" });
+this.state.flatBldNo === "" ? this.setState({ flatBldNoRequired: DISPLAY_BLOCK }) : this.setState({ flatBldNoRequired: DISPLAY_NONE });      
+this.state.locality === "" ? this.setState({ localityRequired: DISPLAY_BLOCK }) : this.setState({ localityRequired: DISPLAY_NONE});
+this.state.city === "" ? this.setState({ cityRequired: DISPLAY_BLOCK }) : this.setState({ cityRequired: DISPLAY_NONE });
+this.state.pincode === "" ? this.setState({ pincodeRequired: DISPLAY_BLOCK }) : this.setState({ pincodeRequired: DISPLAY_NONE });
+this.state.selected === 0 ? this.setState({ stateRequired: DISPLAY_BLOCK }) : this.setState({ stateRequired: DISPLAY_NONE });
 
 if(this.state.flatBldNo === "" || this.state.locality === "" || this.state.city === "" || this.state.pincode === ""  || this.state.selected === ""){return}
 
@@ -314,7 +315,7 @@ xhrSaveAddress.addEventListener("readystatechange", function () {
     if (this.readyState === 4) {              
         let saveAddressResponse = JSON.parse(this.response);
         if(saveAddressResponse.code === 'SAR-002' || saveAddressResponse.code === 'SAR-002'){
-          that.setState({saveAddressError : "dispBlock"});
+          that.setState({saveAddressError : DISPLAY_BLOCK});
           that.setState({saveAddressErrorMsg:"Pincode must contain only numbers and must be 6 digits long"});            
         }else{
           that.setState({ saveAddressSuccess: true });
@@ -578,7 +579,7 @@ handleNext = () => {
     } else {
   this.setState(state => ({
     activeStep: this.state.activeStep + 1,
-    changeOption:"dispNone"
+    changeOption:DISPLAY_NONE
     }));}
 }
 };
@@ -701,7 +702,7 @@ render(){
                <Grid item xs={1}>               
                </Grid>
                <Grid  item xs={2}>
-               <i className="fa fa-inr"></i><span>  {item.item.price}</span>                        
+               <i className="fa fa-inr"></i><span style={{fontSize: '16px'}}>{item.item.price}</span>                        
                </Grid>
                </Grid>);
                })
